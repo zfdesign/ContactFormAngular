@@ -4,7 +4,6 @@
     angular.module('app', []).controller("ContactFormController", ContactFormController);
 
     function ContactFormController() {
-        this.title = 'Contact form';
         this.user = {
             "name": "",
             "email": "",
@@ -17,6 +16,11 @@
         if (contactForm.$valid) {
             // TODO: 
         }
+    };
+
+    ContactFormController.prototype.reset = function () {
+        console.log(contactForm);
+        // todo: angular.copy() back the original model
     };
 
 })(window.angular);
