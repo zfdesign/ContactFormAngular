@@ -22,9 +22,9 @@ namespace ContactFormAngular
 
             bundles.Add(new StyleBundle("~/Styles/css").Include(
                 "~/Styles/bootstrap.css",
-                "~/Styles/site.css"));
+                "~/Styles/app.css"));
 
-            //BundleTable.EnableOptimizations = false;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -1,33 +1,37 @@
-﻿@{
+﻿@model ContactFormAngular.Models.ContactFormAngular
+@{
     ViewBag.Title = "Contact me";
-    ViewBag.ReturnUrl = "Contact";
+    ViewBag.ReturnUrl = "ThankYou";
 }
 
-<h1>@ViewBag.Title</h1>
-<div class="row">
+<div id="contact-form-controller" data-ng-controller="ContactFormController as form" class="row">
     <div class="col-md-12">
+        <h1>@ViewBag.Title</h1>
 
-        @using (Html.BeginForm("Index", "Contact", new {returnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {role = "form", @class = "comment", @novalidate = "", data_ng_controller = "ContactFormController as form"}))
+        @using (Html.BeginForm("Index", "Contact", new {returnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@name = "contactForm", role = "form" }))
         {
             <div class="form-group">
-                <label for="name">Name: </label>
-                <input type="text" required id="name" name="name" data-ng-model="form.user.name" class="form-control" placeholder="Your name" aria-required="true"/>
+                <label for="Name">Name*: </label>
+                @Html.TextBoxFor(m => m.Name, new { type = "text", required = "", data_ng_model = "form.user.name", @class = "form-control", placeholder = "Your name", aria_required = "true" })
+                @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" }).ToHtmlString()))
             </div>
             <div class="form-group">
-                <label for="email">Email: </label>
-                <input type="email" required id="email" data-ng-model="form.user.email" name="email" class="form-control" placeholder="Email address" aria-required="true"/>
+                <label for="Email">Email*: </label>
+                @Html.TextBoxFor(m => m.Email, new { type = "email", required="", data_ng_model = "form.user.email", @class = "form-control", placeholder = "Email address", aria_required = "true" })
+                @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" }).ToHtmlString()))
             </div>
             <div class="form-group">
-                <label for="comment">Comment: </label>
-                <textarea id="comment" name="comment" class="form-control" placeholder="Your comments, please" aria-required="true"></textarea>
+                <label for="Comment">Comment: </label>
+                @Html.TextAreaFor(m => m.Comment, new { data_ng_model="form.user.comment", @class = "form-control", rows = "5", placeholder = "Your comments, please" })
             </div>
             <button type="submit" data-ng-click="form.submit(contactForm)" class="btn btn-primary">Submit</button>
             <button type="reset" data-ng-click="form.reset()" class="btn btn-default">Reset</button>
-
         }
+        <div class="">
+            <p class="small text-muted">* required fields</p>
+        </div>
     </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/app")
