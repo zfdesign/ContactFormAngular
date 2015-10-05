@@ -55,8 +55,9 @@
   <ItemGroup>
     <None Include="package.json" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="tests\" />
+    <Content Include="tests\ContactFormController.test.js" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
