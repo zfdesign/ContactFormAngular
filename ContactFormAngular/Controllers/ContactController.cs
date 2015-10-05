@@ -18,7 +18,13 @@ namespace ContactFormAngular.Controllers
         [HttpPost]
         public ActionResult Index(Models.ContactFormAngular contactForm)
         {
-            return View("ThankYou", contactForm);
+            if (ModelState.IsValid)
+            {
+                // TODO: massage data
+                return View("ThankYou", contactForm);
+            }
+
+            return View(contactForm);
         }
     }
 }

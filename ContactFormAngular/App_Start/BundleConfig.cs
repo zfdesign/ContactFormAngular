@@ -19,6 +19,10 @@ namespace ContactFormAngular
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/app.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/contact").Include(
+                "~/Scripts/app.js",
+                "~/Scripts/lib/jquery/validate/jquery.validate*"));
+
 
             bundles.Add(new StyleBundle("~/Styles/css").Include(
                 "~/Styles/bootstrap.css",
