@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactFormAngular", "ContactFormAngular\ContactFormAngular.csproj", "{3B90949A-613B-4B4A-98EA-26CFA50F1328}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaTestsProject", "KarmaTestsProject\KarmaTestsProject.csproj", "{7924A7BC-E6DC-4CE2-8ACE-23D7F6BEDFEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3B90949A-613B-4B4A-98EA-26CFA50F1328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B90949A-613B-4B4A-98EA-26CFA50F1328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B90949A-613B-4B4A-98EA-26CFA50F1328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7924A7BC-E6DC-4CE2-8ACE-23D7F6BEDFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7924A7BC-E6DC-4CE2-8ACE-23D7F6BEDFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7924A7BC-E6DC-4CE2-8ACE-23D7F6BEDFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7924A7BC-E6DC-4CE2-8ACE-23D7F6BEDFEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

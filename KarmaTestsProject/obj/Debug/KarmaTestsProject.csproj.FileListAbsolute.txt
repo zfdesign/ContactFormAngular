@@ -1,0 +1,6 @@
+C:\Git\ContactFormAngular\KarmaTestsProject\bin\Debug\KarmaTestsProject.dll
+C:\Git\ContactFormAngular\KarmaTestsProject\bin\Debug\KarmaTestsProject.pdb
+C:\Git\ContactFormAngular\KarmaTestsProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Git\ContactFormAngular\KarmaTestsProject\obj\Debug\KarmaTestsProject.csprojResolveAssemblyReference.cache
+C:\Git\ContactFormAngular\KarmaTestsProject\obj\Debug\KarmaTestsProject.dll
+C:\Git\ContactFormAngular\KarmaTestsProject\obj\Debug\KarmaTestsProject.pdb
