@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
-<head data-ng-app="app">
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Styles/css")
 </head>
-<body>
+<body data-ng-app="app">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -31,7 +31,6 @@
             <p>&copy; @DateTime.Now.Year</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/sitescripts")
     @RenderSection("scripts", required: false)
 </body>

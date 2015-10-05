@@ -1,26 +1,27 @@
 ﻿(function (angular) {
-    'use strict';
 
     angular.module('app', []).controller("ContactFormController", ContactFormController);
 
     function ContactFormController() {
         this.title = 'Contact form';
-        this.user = {
+        this.enquiry = {
             "name": "",
             "email": "",
             "comment": ""
         };
+        this.newEnquiry = angular.copy(this.enquiry);
+        this.formSubmitted = false;
     }
 
     ContactFormController.prototype.submit = function (contactForm) {
         console.log(contactForm);
         if (contactForm.$valid) {
-            // TODO: 
+            this.enquiry = angular.copy(this.newEnquiry);
+            this.formSubmitted = true;
         }
     };
     ContactFormController.prototype.reset = function () {
         console.log(contactForm);
-        // todo: angular.copy() back the original model
     };
 
 })(window.angular);
