@@ -1,7 +1,7 @@
 ﻿'use strict';
 var app = angular.module('app', []);
 
-app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerializerJQLike', function ($scope, $http) {
+app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerializerJQLike', '$httpParamSerializerJQLike', function ($scope, $http, $httpParamSerializerJQLike) {
         this.enquiry = {
             "name": "",
             "email": "",
@@ -18,7 +18,10 @@ app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerialize
                 $http({
                     method: "POST",
                     url: this.action,
-                    data: this.enquiry
+                    data: $httpParamSerializerJQLike(this.newEnquiry),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
                 }).then(function (response) {
                     if (response.data.errors) {
                         // Sever side validation fails
