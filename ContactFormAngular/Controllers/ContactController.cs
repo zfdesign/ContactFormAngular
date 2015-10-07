@@ -26,5 +26,15 @@ namespace ContactFormAngular.Controllers
 
             return View(contactForm);
         }
+
+        [HttpPost]
+        public ActionResult JSON(Models.ContactFormAngular contactForm)
+        {
+            if (ModelState.IsValid)
+            {
+                return Json( new { success = true, name = contactForm.Name });
+            }
+            return Json(new { Response });
+        }
     }
 }

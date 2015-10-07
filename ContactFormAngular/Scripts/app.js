@@ -1,13 +1,13 @@
 ﻿'use strict';
 var app = angular.module('app', []);
 
-app.controller("ContactFormController", [
-    '$scope', '$http', '$httpParamSerializerJQLike', function ($scope) {
+app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerializerJQLike', function ($scope, $http) {
         this.enquiry = {
             "name": "",
             "email": "",
             "comment": ""
         };
+        this.action = "/Contact/JSON";
         this.controllerScope = $('#contact-form-controller');
         this.newEnquiry = angular.copy(this.enquiry);
         this.formSubmitted = false;
@@ -15,18 +15,18 @@ app.controller("ContactFormController", [
         this.submit = function (form) {
             if (form.$valid) {
                 this.enquiry = angular.copy(this.newEnquiry);
-                /*var that = this;
+                var that = this;
                 $http({
                     method: "POST",
-                    url: form.action,
-                    data: $httpParamSerializerJQLike(this.enquiry)
+                    url: this.action,
+                    data: this.enquiry
                 }).then(function(response) {
-                    console.log('Sucess: ' + response);
+                    console.log('Sucess: ' + response.data);
+                    that.newEnquiry.name = response.data.name;
                     that.formSubmitted = true;
                 }, function(error) {
-                    console.log('Error: ' + error);
-                });*/
-                this.formSubmitted = true;
+                    alert('Error: ' + error.statusText);
+                });
             }
         };
         this.reset = function () {
@@ -37,13 +37,5 @@ app.controller("ContactFormController", [
         this.resetValidationErrors = function () {
             this.controllerScope.find('span.text-danger span').remove();
         };
-
-        this.disableFormSubmition = function () {
-            this.controllerScope.on('submit', 'form', function (e) {
-                e.preventDefault();
-            });
-        };
-        this.disableFormSubmition();
-
     }
 ]);
