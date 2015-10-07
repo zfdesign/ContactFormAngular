@@ -14,6 +14,7 @@ app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerialize
         this.submit = function (form) {
             this.resetAngularValidationErrors();
             if (form.$valid) {
+                // TODO: Export to a Service
                 var that = this;
                 $http({
                     method: "POST",
@@ -53,6 +54,7 @@ app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerialize
         };
 
         this.resetValidationErrors = function () {
+            this.resetAngularValidationErrors();
             $('span.text-danger span').remove();
         };
     }
