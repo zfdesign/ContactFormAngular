@@ -5,13 +5,11 @@
 
 <div id="contact-form-controller" data-ng-controller="ContactFormController as form" class="row">
     <div class="col-md-12" data-ng-class="{'hide': form.formSubmitted}">
-        
         <h1>@ViewBag.Title</h1>
-
-        <form name="contactForm" method="POST" novalidate>
+        <form name="contactForm" method="POST">
             <div class="form-group">
                 <label for="Name">Name*: </label>
-                @Html.TextBoxFor(m => m.Name, new { type = "text", required = "", pattern = "[A-Za-z]+[A-Za-z ]{4,150}", data_ng_model = "form.newEnquiry.name", @class = "form-control", placeholder = "Your name", aria_required = "true" })
+                @Html.TextBoxFor(m => m.Name, new { type = "text", required = "", maxlength = "150", pattern = "[A-Za-z]+[A-Za-z ]{4,150}", data_ng_model = "form.newEnquiry.name", @class = "form-control", placeholder = "Your name", aria_required = "true" })
                 @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" }).ToHtmlString()))
             </div>
             <div class="form-group">

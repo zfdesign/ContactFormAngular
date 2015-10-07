@@ -8,34 +8,49 @@ app.controller("ContactFormController", ['$scope', '$http', '$httpParamSerialize
             "comment": ""
         };
         this.action = "/Contact/JSON";
-        this.controllerScope = $('#contact-form-controller');
         this.newEnquiry = angular.copy(this.enquiry);
         this.formSubmitted = false;
 
         this.submit = function (form) {
+            this.resetAngularValidationErrors();
             if (form.$valid) {
-                this.enquiry = angular.copy(this.newEnquiry);
                 var that = this;
                 $http({
                     method: "POST",
                     url: this.action,
                     data: this.enquiry
-                }).then(function(response) {
-                    console.log('Sucess: ' + response.data);
-                    that.newEnquiry.name = response.data.name;
-                    that.formSubmitted = true;
+                }).then(function (response) {
+                    if (response.data.errors) {
+                        // Sever side validation fails
+                        var errors = response.data.errors;
+                        angular.forEach(errors, function (value, key) {
+                            if (value.length > 0) {
+                                $('[name="' + key + '"]').after('<span class="error">' + value + '</span>');
+                            }
+                        });
+                    } else {
+                        // Submitted successfully 
+                        that.newEnquiry.name = response.data.name;
+                        that.formSubmitted = true;
+                    }
                 }, function(error) {
                     alert('Error: ' + error.statusText);
                 });
             }
+            // ELSE: Expected jQuery validation
         };
+
         this.reset = function () {
             this.newEnquiry = angular.copy(this.enquiry);
             this.resetValidationErrors();
         };
 
+        this.resetAngularValidationErrors = function () {
+            $('span.error').remove();
+        };
+
         this.resetValidationErrors = function () {
-            this.controllerScope.find('span.text-danger span').remove();
+            $('span.text-danger span').remove();
         };
     }
 ]);

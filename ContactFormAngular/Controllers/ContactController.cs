@@ -34,7 +34,13 @@ namespace ContactFormAngular.Controllers
             {
                 return Json( new { success = true, name = contactForm.Name });
             }
-            return Json(new { Response });
+
+            var errorList = ModelState.ToDictionary(
+                k => k.Key,
+                e => e.Value.Errors.Select(m => m.ErrorMessage).ToArray()
+            );
+
+            return Json(new { errors = errorList });
         }
     }
 }
